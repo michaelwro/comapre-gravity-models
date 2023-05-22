@@ -33,7 +33,7 @@ def zonal(lat: float, lon: float, order=2) -> float:
 
     Resources
     ---------
-        "Fundamentals of Astrodynamics" (BM&W) section 9.7.
+        "Fundamentals of Astrodynamics and Applications" (Vallado) section 8.7.1.
     """
     max_order = 4
 

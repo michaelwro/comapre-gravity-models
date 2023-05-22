@@ -8,3 +8,7 @@ Code to do a quick comparison of basic earth gravity models. Models include:
 * J2
 * J3
 * J4
+
+## Resources
+
+https://www.mathworks.com/help/aerotbx/ug/comparing-zonal-harmonic-gravity-model-to-other-gravity-models.html
