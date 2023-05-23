@@ -64,10 +64,13 @@ def zonal(lat: float, lon: float, order=2) -> float:
         y_accel -= y_term
         z_accel -= z_term
 
+    """
+    a_total = a_linear + (W x W x R)
+    """
     w = np.array([0, 0, constants.WGS84_W_EARTH_RPS])
-    centrfugal_accel = np.cross(w, np.cross(w, r_vec))
+    centrifugal_accel = np.cross(w, np.cross(w, r_vec))
+    grav_ecef = np.array([x_accel, y_accel, z_accel]) - centrifugal_accel
 
-    grav_ecef = np.array([x_accel, y_accel, z_accel]) - centrfugal_accel
     grav_ned = utils.dcm_ecef_to_ned(lat, lon) @ grav_ecef
 
     return grav_ned[2]

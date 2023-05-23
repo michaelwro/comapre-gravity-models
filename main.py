@@ -11,7 +11,7 @@ import models
 import numpy as np
 import matplotlib.pyplot as plt
 
-latitudes = list(np.linspace(-1, 1, 100))
+latitudes = list(np.linspace(-90, 90, 100))
 
 zonal_j2 = []
 zonal_j3 = []
