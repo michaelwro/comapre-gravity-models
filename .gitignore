@@ -3,4 +3,5 @@
 
 .ruff_cache/
 
-./*.png
+*.png
+!imgs/*

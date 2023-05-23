@@ -2,12 +2,9 @@
 
 **Code By:** Michael Wrona
 
-Code to do a quick comparison of basic earth gravity models. Models include:
+Code to do a quick comparison of basic earth gravity models.
 
-* WGS84
-* J2
-* J3
-* J4
+![Gravity plots](imgs/gravity.png)
 
 ## Resources
 

@@ -11,42 +11,48 @@ import models
 import numpy as np
 import matplotlib.pyplot as plt
 
-latitudes = list(np.linspace(-90, 90, 100))
 
-zonal_j2 = []
-zonal_j3 = []
-zonal_j4 = []
-wgs84 = []
-welmec = []
+def main() -> None:
+    latitudes = list(np.linspace(-90, 90, 100))
 
-for lat in latitudes:
-    zonal_j2_grav = models.zonal(lat, 0, order=2)
-    zonal_j2.append(np.linalg.norm(zonal_j2_grav))
+    zonal_j2 = []
+    zonal_j3 = []
+    zonal_j4 = []
+    wgs84 = []
+    welmec = []
 
-    zonal_j3_grav = models.zonal(lat, 0, order=3)
-    zonal_j3.append(zonal_j3_grav)
+    for lat in latitudes:
+        zonal_j2_grav = models.zonal(lat, 0, order=2)
+        zonal_j2.append(np.linalg.norm(zonal_j2_grav))
 
-    zonal_j4_grav = models.zonal(lat, 0, order=4)
-    zonal_j4.append(zonal_j4_grav)
+        zonal_j3_grav = models.zonal(lat, 0, order=3)
+        zonal_j3.append(zonal_j3_grav)
 
-    wgs84_grav = models.wgs84(lat, 0)
-    wgs84.append(wgs84_grav)
+        zonal_j4_grav = models.zonal(lat, 0, order=4)
+        zonal_j4.append(zonal_j4_grav)
 
-    welmec_grav = models.welmec(lat, 0)
-    welmec.append(welmec_grav)
+        wgs84_grav = models.wgs84(lat, 0)
+        wgs84.append(wgs84_grav)
 
-plt.figure()
-plt.plot(latitudes, zonal_j2, label="J2")
-plt.plot(latitudes, zonal_j3, label="J3")
-plt.plot(latitudes, zonal_j4, label="J4")
-plt.plot(latitudes, wgs84, label="WGS84")
-plt.plot(latitudes, welmec, label="WELMEC")
+        welmec_grav = models.welmec(lat, 0)
+        welmec.append(welmec_grav)
 
-plt.title("Comparing Gravity Models")
-plt.xlabel("Latitude [deg]")
-plt.ylabel(r"Gravitational Accel. [$m/s^2$]")
-plt.legend()
-plt.grid()
+    plt.figure()
+    plt.plot(latitudes, zonal_j2, label="J2")
+    plt.plot(latitudes, zonal_j3, label="J3")
+    plt.plot(latitudes, zonal_j4, label="J4")
+    plt.plot(latitudes, wgs84, label="WGS84")
+    plt.plot(latitudes, welmec, label="WELMEC")
 
-plt.savefig("gravity.png")
-# plt.show()
+    plt.title("Comparing Gravity Models")
+    plt.xlabel("WGS84 Latitude [deg]")
+    plt.ylabel(r"Gravitational Accel. [$m/s^2$]")
+    plt.legend()
+    plt.grid()
+
+    plt.savefig("imgs/gravity.png")
+    # plt.show()
+
+
+if __name__ == "__main__":
+    main()
