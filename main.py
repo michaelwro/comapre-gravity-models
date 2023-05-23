@@ -11,12 +11,13 @@ import models
 import numpy as np
 import matplotlib.pyplot as plt
 
-latitudes = list(np.linspace(-90, 90, 100))
+latitudes = list(np.linspace(-1, 1, 100))
 
 zonal_j2 = []
 zonal_j3 = []
 zonal_j4 = []
 wgs84 = []
+welmec = []
 
 for lat in latitudes:
     zonal_j2_grav = models.zonal(lat, 0, order=2)
@@ -31,11 +32,15 @@ for lat in latitudes:
     wgs84_grav = models.wgs84(lat, 0)
     wgs84.append(wgs84_grav)
 
+    welmec_grav = models.welmec(lat, 0)
+    welmec.append(welmec_grav)
+
 plt.figure()
 plt.plot(latitudes, zonal_j2, label="J2")
 plt.plot(latitudes, zonal_j3, label="J3")
 plt.plot(latitudes, zonal_j4, label="J4")
 plt.plot(latitudes, wgs84, label="WGS84")
+plt.plot(latitudes, welmec, label="WELMEC")
 
 plt.title("Comparing Gravity Models")
 plt.xlabel("Latitude [deg]")

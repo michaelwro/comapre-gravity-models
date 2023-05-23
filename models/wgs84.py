@@ -10,7 +10,7 @@ Created: 22 May 2023
 import numpy as np
 
 
-def wgs84(lat: float, lon: float) -> np.array:
+def wgs84(lat: float, lon: float) -> float:
     """Compute gravitational acceleration with the WGS84 gravity equation.
 
     Args
