@@ -5,3 +5,5 @@
 
 *.png
 !imgs/*
+
+**/venv/
